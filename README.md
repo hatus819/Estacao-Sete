@@ -1,36 +1,53 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Delivery System
 
-## Getting Started
+Sistema completo de delivery de marmitex utilizando T3 Stack.
 
-First, run the development server:
+## Tecnologias
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- Next.js 14 (App Router)
+- TypeScript
+- Prisma + PostgreSQL
+- NextAuth.js
+- Supabase Realtime
+- Stripe
+- Tailwind CSS + shadcn/ui
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Setup
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. Clone o repositório
+2. Instale as dependências: `npm install`
+3. Configure o banco de dados PostgreSQL
+4. Copie `.env` e configure as variáveis:
+   - DATABASE_URL
+   - NEXTAUTH_SECRET
+   - NEXTAUTH_URL
+   - NEXT_PUBLIC_SUPABASE_URL
+   - NEXT_PUBLIC_SUPABASE_ANON_KEY
+   - STRIPE_SECRET_KEY
+   - STRIPE_WEBHOOK_SECRET
+   - NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
+5. Execute as migrações: `npx prisma migrate dev`
+6. Gere o cliente Prisma: `npx prisma generate`
+7. Execute o seed (se houver)
+8. Inicie o servidor: `npm run dev`
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Funcionalidades
 
-## Learn More
+- Loja do cliente com cardápio
+- Painel administrativo com dashboard
+- Tela da cozinha (KDS) com atualizações em tempo real
+- Autenticação com roles (ADMIN, COZINHA)
+- Integração com Stripe para pagamentos
 
-To learn more about Next.js, take a look at the following resources:
+## Estrutura
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `src/app/(public)/` - Páginas públicas da loja
+- `src/app/admin/` - Páginas protegidas do admin
+- `src/lib/` - Utilitários e configurações
+- `src/components/` - Componentes reutilizáveis
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Desenvolvimento
 
-## Deploy on Vercel
+Para desenvolvimento, use `npm run dev`.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Para build de produção: `npm run build`.
