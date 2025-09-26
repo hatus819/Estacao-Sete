@@ -9,6 +9,11 @@ export default withAuth(
       authorized: ({ token, req }) => {
         const { pathname } = req.nextUrl
 
+        // Allow public access to login page
+        if (pathname === '/admin/login') {
+          return true
+        }
+
         // Allow access to /admin/cozinha for COZINHA role
         if (pathname.startsWith('/admin/cozinha')) {
           return token?.role === 'COZINHA' || token?.role === 'ADMIN'
