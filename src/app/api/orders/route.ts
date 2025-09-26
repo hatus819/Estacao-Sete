@@ -15,7 +15,7 @@ export async function GET() {
       orderBy: { createdAt: 'desc' }
     })
     return NextResponse.json(orders)
-  } catch (error) {
+  } catch {
     return NextResponse.json({ error: 'Failed to fetch orders' }, { status: 500 })
   }
 }
@@ -46,7 +46,7 @@ export async function PUT(request: NextRequest) {
       })
 
     return NextResponse.json(order)
-  } catch (error) {
+  } catch {
     return NextResponse.json({ error: 'Failed to update order' }, { status: 500 })
   }
 }

@@ -14,11 +14,17 @@ interface OrderItem {
   }
 }
 
+interface CustomerInfo {
+  name: string
+  phone: string
+  address: string
+}
+
 interface Order {
   id: string
   status: 'RECEBIDO' | 'EM_PREPARO' | 'PRONTO_PARA_ENTREGA' | 'DESPACHADO'
   total: number
-  customerInfo: any
+  customerInfo: CustomerInfo
   items: OrderItem[]
   createdAt: string
 }
